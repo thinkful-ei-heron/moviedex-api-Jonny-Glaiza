@@ -17,11 +17,12 @@ app.use(helmet());
 function validateBearer(req, res, next) {
     const authVal = req.get('Authorization') || '';
     if (!authVal.startsWith('Bearer ')) {
-        return res.status(400).json({error: 'Authorization token not found'})
+        return res.status(400).json({error: 'Authorization token not found'});
     }
+
     const [bearer ,token] = authVal.split(' ');
     if(token !== API_TOKEN) {
-        return res.status(401).json({error: 'Token is invalid'})
+        return res.status(401).json({error: 'Token is invalid'});
     }
     next();
 }
@@ -49,7 +50,7 @@ app.get('/movie', validateBearer, (req, res) => {
     res.json(apps);
 });
 
-
-app.listen(8000, () => {
-    console.log('Express server is listening on port 8000!');
+const PORT = 8000;
+app.listen(PORT, () => {
+    console.log(`Server listening at http://localhost:${PORT}`);
 });
