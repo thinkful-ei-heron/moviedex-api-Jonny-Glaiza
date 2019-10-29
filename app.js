@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const playstore = require('./movies-data-small');
+const MOVIES = require('./movies-data-small.json');
 
 const app = express();
 
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/movie', validateBearer, (req, res) => {
-    let apps = playstore;
+    let apps = MOVIES;
     const {genre, country, avg_vote} = req.query;
 
     if (genre) {
