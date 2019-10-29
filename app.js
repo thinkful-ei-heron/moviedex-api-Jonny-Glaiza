@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const playstore = require('./playstore');
+
+const playstore = require('./movies-data-small');
 
 const app = express();
 
